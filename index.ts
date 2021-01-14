@@ -33,15 +33,14 @@ const data: Data = {
 const sum = (node: Data) => {
 
   let flatArrr: Data[] = [node]
-  const hasChildren = () => flatArrr.findIndex(item => item.children)
-  const getIndex = () => flatArrr.findIndex(item => item.children)
 
-  while (hasChildren() !== -1) {
-    const index = getIndex()
-    if (flatArrr[index].children) {
-      flatArrr.push(...flatArrr[index].children)
+  let i = 0
+  while (flatArrr[i]?.children) {
+    if (flatArrr[i].children) {
+      flatArrr.push(...flatArrr[i].children)
     }
-    flatArrr[index].children = null
+    flatArrr[i].children = null
+    i++
   }
 
   console.log(flatArrr)
